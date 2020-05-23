@@ -1,6 +1,6 @@
 {
   "name": "coa-serve",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "serve component for coa",
   "keywords": [
     "coajs",
@@ -23,11 +23,11 @@
   "dependencies": {
     "@types/koa": "^2.11.3",
     "@types/koa-router": "^7.4.1",
-    "coa-echo": "^1.0.7",
-    "coa-env": "^1.0.2",
-    "coa-helper": "^1.0.5",
-    "coa-redis": "^1.0.3",
-    "coa-secure": "^1.0.3",
+    "coa-echo": "*",
+    "coa-env": "*",
+    "coa-helper": "*",
+    "coa-redis": "*",
+    "coa-secure": "*",
     "fast-glob": "^3.2.2",
     "koa": "^2.12.0",
     "koa-bodyparser": "^4.3.0",

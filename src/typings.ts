@@ -1,7 +1,7 @@
 import * as Koa from 'koa'
-import contextExtend from './context'
+import serve_context from './context'
 
-declare type ContextExtend = typeof contextExtend;
+declare type ServeContext = typeof serve_context;
 
 interface ActionOptions {
   name?: string,
@@ -35,7 +35,7 @@ export interface DocsEnv {
 export type Apps = Dic<Dic<string>>
 export type Session = Dic<string | string[]>
 
-export interface Context extends ContextExtend, Koa.Context {
+export interface Context extends ServeContext, Koa.Context {
   params: { [index: string]: string },
 }
 

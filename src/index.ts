@@ -1,5 +1,5 @@
 import serve from './serve'
 
 export { serve }
-export { ServeLife } from './libs/ServeLife'
+export { ServeCycle } from './libs/ServeCycle'
 export { Context, Action, DocsEnv, Dic } from './typings'

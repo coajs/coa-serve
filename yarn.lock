@@ -84,13 +84,6 @@
   resolved "https://registry.npmjs.org/@types/http-assert/-/http-assert-1.5.1.tgz#d775e93630c2469c2f980fc27e3143240335db3b"
   integrity sha512-PGAK759pxyfXE78NbKxyfRcWYA/KwW17X290cNev/qAsn9eQIxkH4shoNBafH37wewhDG/0p1cHPbK6+SzZjWQ==
 
-"@types/ioredis@^4.16.2":
-  version "4.16.2"
-  resolved "https://registry.npmjs.org/@types/ioredis/-/ioredis-4.16.2.tgz#192c487a003463a6881dbc29faaa168902ef851a"
-  integrity sha512-b1wSWCLx5ygzDZ2d1BYBzsTzUcPEOcJH8d5O6AJGGJXjE6C+HrlA61sw5GQNqtqTPVo2Hpc4rPA30lI0T6QSLQ==
-  dependencies:
-    "@types/node" "*"
-
 "@types/keygrip@*":
   version "1.0.2"
   resolved "https://registry.npmjs.org/@types/keygrip/-/keygrip-1.0.2.tgz#513abfd256d7ad0bf1ee1873606317b33b1b2a72"
@@ -203,11 +196,6 @@ cache-content-type@^1.0.0:
     mime-types "^2.1.18"
     ylru "^1.2.0"
 
-cluster-key-slot@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/cluster-key-slot/-/cluster-key-slot-1.1.0.tgz#30474b2a981fb12172695833052bc0d01336d10d"
-  integrity sha512-2Nii8p3RwAPiFwsnZvukotvow2rIHM+yQ6ZcBXGHdniadkYGZYiGmkHJIbZPIV9nfv7m/U1IPMVVcAhoWFeklw==
-
 co-body@^6.0.0:
   version "6.0.0"
   resolved "https://registry.npmjs.org/co-body/-/co-body-6.0.0.tgz#965b9337d7f5655480787471f4237664820827e3"
@@ -236,11 +224,9 @@ coa-env@*:
     extend2 "^1.0.0"
 
 coa-error@*:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/coa-error/-/coa-error-1.0.3.tgz#072f8b1c4dcfbc5d031d34ba0f65c8c169edbc6b"
-  integrity sha512-hXcLMNgwrUxlDYuVyPhoj0Dh43W4D/S0u/yOOFoTe61r2VhRFle3vpiIbTqL200BUdqo2O4lHSobatYJFXGesw==
-  dependencies:
-    coa-echo "*"
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/coa-error/-/coa-error-1.0.4.tgz#d93955d91d6361619a432e8ace67c591e71c15e1"
+  integrity sha512-/REkH/pUHX68JJqzeeL9A66MftlLkIw513iJaKtbxy9KidqVnVsbZecdBwz0zmRzK027PspiWtfEEGM92ZrU3Q==
 
 coa-helper@*:
   version "1.0.5"
@@ -252,18 +238,6 @@ coa-helper@*:
     dayjs "^1.8.27"
     hashids "^2.2.1"
     lodash "^4.17.15"
-
-coa-redis@*:
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/coa-redis/-/coa-redis-1.0.6.tgz#7a099f769d743583c39dd2229690d3bf8b9a7226"
-  integrity sha512-Jlzf/zFykeQEbKg8N+XIaSWn9kgkwjB23m0WorsUDvbtmfC3NaE4hmvrtYoP3Dy3jqI7Mf+GXovkX1X7f+PofQ==
-  dependencies:
-    "@types/ioredis" "^4.16.2"
-    coa-echo "*"
-    coa-env "*"
-    coa-error "*"
-    coa-helper "*"
-    ioredis "^4.17.1"
 
 coa-secure@*:
   version "1.0.3"
@@ -337,11 +311,6 @@ delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
-
-denque@^1.1.0:
-  version "1.4.1"
-  resolved "https://registry.npmjs.org/denque/-/denque-1.4.1.tgz#6744ff7641c148c3f8a69c307e51235c1f4a37cf"
-  integrity sha512-OfzPuSZKGcgr96rf1oODnfjqBFmr1DVoc/TrItj3Ohe0Ah1C5WX5Baquw/9U9KovnQ88EqmJbD66rKYUQYN1tQ==
 
 depd@^1.1.2, depd@~1.1.2:
   version "1.1.2"
@@ -479,21 +448,6 @@ inherits@2.0.4:
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
-ioredis@^4.17.1:
-  version "4.17.1"
-  resolved "https://registry.npmjs.org/ioredis/-/ioredis-4.17.1.tgz#06ef3d3b2cb96b7e6bc90a7b8839a33e743843ad"
-  integrity sha512-kfxkN/YO1dnyaoAGyNdH3my4A1eoGDy4QOfqn6o86fo4dTboxyxYVW0S0v/d3MkwCWlvSWhlwq6IJMY9BlWs6w==
-  dependencies:
-    cluster-key-slot "^1.1.0"
-    debug "^4.1.1"
-    denque "^1.1.0"
-    lodash.defaults "^4.2.0"
-    lodash.flatten "^4.4.0"
-    redis-commands "1.5.0"
-    redis-errors "^1.2.0"
-    redis-parser "^3.0.0"
-    standard-as-callback "^2.0.1"
-
 is-extglob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
@@ -621,16 +575,6 @@ koa@^2.12.0:
     statuses "^1.5.0"
     type-is "^1.6.16"
     vary "^1.1.2"
-
-lodash.defaults@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.npmjs.org/lodash.defaults/-/lodash.defaults-4.2.0.tgz#d09178716ffea4dde9e5fb7b37f6f0802274580c"
-  integrity sha1-0JF4cW/+pN3p5ft7N/bwgCJ0WAw=
-
-lodash.flatten@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/lodash.flatten/-/lodash.flatten-4.4.0.tgz#f31c22225a9632d2bbf8e4addbef240aa765a61f"
-  integrity sha1-8xwiIlqWMtK7+OSt2+8kCqdlph8=
 
 lodash@^4.17.15:
   version "4.17.15"
@@ -766,23 +710,6 @@ raw-body@^2.3.3:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-redis-commands@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/redis-commands/-/redis-commands-1.5.0.tgz#80d2e20698fe688f227127ff9e5164a7dd17e785"
-  integrity sha512-6KxamqpZ468MeQC3bkWmCB1fp56XL64D4Kf0zJSwDZbVLLm7KFkoIcHrgRvQ+sk8dnhySs7+yBg94yIkAK7aJg==
-
-redis-errors@^1.0.0, redis-errors@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/redis-errors/-/redis-errors-1.2.0.tgz#eb62d2adb15e4eaf4610c04afe1529384250abad"
-  integrity sha1-62LSrbFeTq9GEMBK/hUpOEJQq60=
-
-redis-parser@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/redis-parser/-/redis-parser-3.0.0.tgz#b66d828cdcafe6b4b8a428a7def4c6bcac31c8b4"
-  integrity sha1-tm2CjNyv5rS4pCin3vTGvKwxyLQ=
-  dependencies:
-    redis-errors "^1.0.0"
-
 resolve-path@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/resolve-path/-/resolve-path-1.4.0.tgz#c4bda9f5efb2fce65247873ab36bb4d834fe16f7"
@@ -820,11 +747,6 @@ setprototypeof@1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.1.1.tgz#7e95acb24aa92f5885e0abef5ba131330d4ae683"
   integrity sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
-
-standard-as-callback@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/standard-as-callback/-/standard-as-callback-2.0.1.tgz#ed8bb25648e15831759b6023bdb87e6b60b38126"
-  integrity sha512-NQOxSeB8gOI5WjSaxjBgog2QFw55FV8TkS6Y07BiB3VJ8xNTvUYm0wl0s8ObgQ5NhdpnNfigMIKjgPESzgr4tg==
 
 "statuses@>= 1.4.0 < 2", "statuses@>= 1.5.0 < 2", statuses@^1.5.0:
   version "1.5.0"

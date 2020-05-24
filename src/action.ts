@@ -4,7 +4,7 @@ import { _ } from 'coa-helper'
 import * as fg from 'fast-glob'
 import docs from './bin/docs'
 import route from './bin/route'
-import { ServeLife } from './libs/ServeLife'
+import { ServeCycle } from './libs/ServeCycle'
 import html from './libs/swagger-html'
 import { Action, Apps } from './typings'
 
@@ -48,7 +48,7 @@ const doEachActions = (base: string, sep: string) => {
 }
 
 // 添加action文件
-const doDocAction = (base: string, sep: string, apps: Apps, life: ServeLife) => {
+const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle) => {
 
   // 遍历apps分组
   docs.tags(apps)
@@ -62,7 +62,7 @@ const doDocAction = (base: string, sep: string, apps: Apps, life: ServeLife) => 
   })
   // 时钟调用
   route.router.get(base + 'timer', ctx => {
-    life.onTimer().then().catch(e => echo.error(e.toString()))
+    cycle.onTimer().then().catch(e => echo.error(e.toString()))
     ctx.body = 'OK'
   })
   // 文档UI
@@ -80,13 +80,13 @@ const doDocAction = (base: string, sep: string, apps: Apps, life: ServeLife) => 
   })
 }
 
-export default function (base: string, sep: string, apps: Apps, life: ServeLife) {
+export default function (base: string, sep: string, apps: Apps, cycle: ServeCycle) {
 
   if (!base.startsWith('/')) base = '/' + base
   if (!base.endsWith(sep)) base = base + sep
 
   // 处理doc的额外路由
-  doDocAction(base, sep, apps, life)
+  doDocAction(base, sep, apps, cycle)
 
   // 处理每个action路由
   doEachActions(base, sep)

@@ -3,22 +3,22 @@ import * as Koa from 'koa'
 import action from './action'
 import helper from './bin/helper'
 import context from './context'
-import { ServeLife } from './libs/ServeLife'
+import { ServeCycle } from './libs/ServeCycle'
 import response from './response'
 import { Apps } from './typings'
 
 type ServeOptions = { apps: Apps, context: any, base?: string, sep?: string }
 
-export default async (options: ServeOptions, life: ServeLife) => {
+export default async (options: ServeOptions, cycle: ServeCycle) => {
 
   helper.showBootInfo()
 
   const option = Object.assign({ base: 'cgi', sep: '.' }, options)
 
-  await life.onCreated()
+  await cycle.onCreated()
 
   // 初始化路由
-  const actions = action(option.base, option.sep, option.apps, life)
+  const actions = action(option.base, option.sep, option.apps, cycle)
 
   // 初始化koa中间件
   const koa = new Koa()
@@ -36,7 +36,7 @@ export default async (options: ServeOptions, life: ServeLife) => {
   const port = parseInt(process.env.PORT as string) || 8000
   koa.listen(port, async () => {
     helper.showBootInfo(port)
-    await life.onStarted()
+    await cycle.onStarted()
     env.set({ started: true })
   })
 

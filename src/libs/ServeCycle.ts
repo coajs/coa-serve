@@ -1,4 +1,4 @@
-export class ServeLife {
+export class ServeCycle {
 
   async onCreated () {
 

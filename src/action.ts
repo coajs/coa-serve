@@ -11,7 +11,9 @@ import { Action, Apps } from './typings'
 // 添加action文件
 const doEachActions = (base: string, sep: string) => {
 
-  const files = fg.sync('apps*/**/action.js', { cwd: process.env.NODE_PATH })
+  const mods = Object.keys(env.mods).join('|')
+
+  const files = fg.sync(mods ? `apps-(${mods})/**/action.js` : 'apps*/**/action.js', { cwd: process.env.NODE_PATH })
 
   _.forEach(files, filename => {
 

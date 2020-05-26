@@ -1,6 +1,6 @@
 {
   "name": "coa-serve",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "serve component for coa",
   "keywords": [
     "coajs",
@@ -32,6 +32,11 @@
   "devDependencies": {
     "@types/koa-router": "^7.4.1",
     "@types/node": "^14.0.5",
+    "coa-echo": "^1.0.8",
+    "coa-env": "^1.0.2",
+    "coa-error": "^1.0.4",
+    "coa-helper": "^1.0.5",
+    "coa-secure": "^1.0.3",
     "typescript": "^3.9.3"
   },
   "peerDependencies": {

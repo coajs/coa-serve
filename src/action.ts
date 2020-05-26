@@ -13,7 +13,7 @@ const doEachActions = (base: string, sep: string) => {
 
   const mods = Object.keys(env.mods).join('|')
 
-  const files = fg.sync(mods ? `apps-(${mods})/**/action.js` : 'apps*/**/action.js', { cwd: process.env.NODE_PATH })
+  const files = fg.sync(mods ? `apps-(${mods}|-)/**/action.js` : 'apps*/**/action.js', { cwd: process.env.NODE_PATH })
 
   _.forEach(files, filename => {
 
@@ -55,8 +55,9 @@ const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle) =
   // 遍历apps分组
   docs.tags(apps)
 
-  const docPath = env.docs.path.replace(/\/$/, '')
   const groups = _.keys(docs.infos)
+  const docName = env.isOnline ? 'doc-' + env.runEnv : 'doc' as string
+  const docPath = base + docName
 
   // 版本信息
   route.router.get(base + 'version', ctx => {
@@ -71,11 +72,11 @@ const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle) =
   route.router.get(docPath, (ctx: any) => {
     if (ctx.path === docPath) return ctx.redirect(docPath + '/')
     const origin = ctx.realOrigin
-    const urls = groups.map(k => ({ url: `${origin}${docPath}/${k}.json`, name: _.upperFirst(k) }))
+    const urls = groups.map(k => ({ url: `${origin}${docPath}${sep}${k}.json`, name: _.upperFirst(k) }))
     ctx.body = html(base, sep, urls)
   })
   // 文档内容
-  route.router.get(docPath + '/:group.json', (ctx: any) => {
+  route.router.get(docPath + sep + ':group.json', (ctx: any) => {
     const group = ctx.params.group || 'main'
     docs.infos[group].servers[0].url = ctx.realOrigin
     ctx.body = docs.infos[group]

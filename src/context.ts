@@ -34,7 +34,7 @@ export default {
   get realOrigin () {
     const that = this as Context
     const protocol = that.header['x-client-scheme'] || that.header['x-scheme'] || that.protocol
-    const host = that.header['ali-swift-stat-host'] || that.host.replace(':8081', '')
+    const host = that.header['ali-swift-stat-host'] || that.host
     return protocol + '://' + host
   },
 

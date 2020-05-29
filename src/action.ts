@@ -2,6 +2,7 @@ import { echo } from 'coa-echo'
 import { env } from 'coa-env'
 import { _ } from 'coa-helper'
 import * as fg from 'fast-glob'
+import auth from './bin/auth'
 import docs from './bin/docs'
 import route from './bin/route'
 import { ServeCycle } from './libs/ServeCycle'
@@ -56,8 +57,8 @@ const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle) =
   docs.tags(apps)
 
   const groups = _.keys(docs.infos)
-  const docName = env.isOnline ? 'doc-' + env.runEnv : 'doc' as string
-  const docPath = base + docName
+  const core_base = base.substr(1, base.length - 2)
+  const doc_url = (env.isOnline ? '/sdoc' : '/doc') + (core_base ? (sep + core_base) : '')
 
   // 版本信息
   route.router.get(base + 'version', ctx => {
@@ -69,14 +70,21 @@ const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle) =
     ctx.body = 'OK'
   })
   // 文档UI
-  route.router.get(docPath, (ctx: any) => {
-    if (ctx.path === docPath) return ctx.redirect(docPath + '/')
+  route.router.get(doc_url, (ctx: any) => {
+    // 判断链接地址
+    if (ctx.path === doc_url)
+      return ctx.redirect(doc_url + '/')
+    // 线上环境判断是否有权限
+    if (env.isOnline) {
+      const authed = auth.checkPass(ctx, 'aex', 'yangtao')
+      if (!authed) return
+    }
     const origin = ctx.realOrigin
-    const urls = groups.map(k => ({ url: `${origin}${docPath}${sep}${k}.json`, name: _.upperFirst(k) }))
+    const urls = groups.map(k => ({ url: `${origin}${doc_url}${sep}${k}.json`, name: _.upperFirst(k) }))
     ctx.body = html(base, sep, urls)
   })
   // 文档内容
-  route.router.get(docPath + sep + ':group.json', (ctx: any) => {
+  route.router.get(doc_url + sep + ':group.json', (ctx: any) => {
     const group = ctx.params.group || 'main'
     docs.infos[group].servers[0].url = ctx.realOrigin
     ctx.body = docs.infos[group]

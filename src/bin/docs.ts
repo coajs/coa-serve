@@ -33,9 +33,8 @@ export default new class {
 
   tags (tags: Apps) {
     _.defaultsDeep(docs, env.docs, {
-      path: '/doc',
-      filter: true,
-      expansion: 'none',
+      filter: false,
+      expansion: 'list',
       info: {
         title: '平台接口文档',
         version: env.version,

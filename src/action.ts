@@ -43,6 +43,11 @@ const doEachActions = (base: string, sep: string) => {
       // 将当前控制器加入到分组
       options.group = group1 + ' ' + group2
 
+      // 兼容旧版本
+      options.legacy && route.append(options.legacy, method, handle)
+      // 兼容跳转
+      options.redirect && route.router.redirect(options.redirect, path)
+
       route.append(path, method, handle)
       docs.append(path, method, options, group1)
 

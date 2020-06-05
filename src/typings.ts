@@ -15,6 +15,8 @@ interface ActionOptions {
   result?: { [i: string]: any },
   note?: { [i: string]: any },
   delete?: boolean,
+  legacy?: string,
+  redirect?: string,
 }
 
 // 对外

@@ -41,7 +41,7 @@ const doEachActions = (base: string, sep: string) => {
       if (!options.name || !handle) return
 
       // 将当前控制器加入到分组
-      options.group = group1 + ' ' + group2
+      options.group = group2
 
       // 兼容旧版本
       options.legacy && route.append(options.legacy, method, handle)

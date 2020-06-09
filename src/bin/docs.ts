@@ -46,7 +46,7 @@ export default new class {
       if (!env.mods[''] && !env.mods[key1]) return
       if (!infos[key1]) infos[key1] = _.cloneDeep(docs)
       _.forEach(content1, (content2, key2) => {
-        infos[key1].tags.push({ name: _.startCase(`${key1} ${key2}`), description: content2 })
+        infos[key1].tags.push({ name: _.startCase(key2), description: content2 })
       })
     })
   }

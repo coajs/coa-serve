@@ -12,6 +12,12 @@ import { Action, Apps } from './typings'
 // 添加action文件
 const doEachActions = (base: string, sep: string) => {
 
+  const getValidPath = (path: string) => {
+    if (sep !== '.') path = path.replace(/\./g, sep)
+    if (path.startsWith(sep)) path = path.substr(1)
+    return base + path
+  }
+
   const mods = Object.keys(env.mods).join('|')
 
   const files = fg.sync(mods ? `apps-(${mods}|-)/**/action.js` : 'apps*/**/action.js', { cwd: process.env.NODE_PATH })
@@ -29,9 +35,7 @@ const doEachActions = (base: string, sep: string) => {
     _.forEach(file, (v, path) => {
 
       // 处理path
-      if (sep !== '.') path = path.replace(/\./g, sep)
-      if (path.startsWith(sep)) path = path.substr(1)
-      path = base + path
+      path = getValidPath(path)
 
       const options = v.options || {}
       const handle = v.default
@@ -44,9 +48,9 @@ const doEachActions = (base: string, sep: string) => {
       options.group = group2
 
       // 兼容旧版本
-      options.legacy && route.append(options.legacy, method, handle)
+      options.legacy && route.append(getValidPath(options.legacy), method, handle)
       // 兼容跳转
-      options.redirect && route.router.redirect(options.redirect, path)
+      options.redirect && route.router.redirect(getValidPath(options.redirect), path)
 
       route.append(path, method, handle)
       docs.append(path, method, options, group1)

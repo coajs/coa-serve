@@ -61,10 +61,11 @@ export default {
     return helper.checkParam(id, value, this.getParam(id), false)
   },
 
-  page (this: Context) {
+  pager (this: Context) {
     const rows = _.toInteger(this.query.rows) || 20
     const last = _.toInteger(this.query.last) || 0
-    return { rows, last }
+    const page = _.toInteger(this.query.page) || 1
+    return { rows, last, page }
   },
 
   jsonOk (this: Context, body = {}, state?: JsonState) {

@@ -1,6 +1,6 @@
 {
   "name": "coa-serve",
-  "version": "1.0.14",
+  "version": "1.0.16",
   "description": "serve component for coa",
   "keywords": [
     "coajs",
@@ -18,26 +18,27 @@
   "scripts": {
     "dev": "tsc -w",
     "build": "rm -rf dist && tsc && cp package.json dist",
-    "npm-publish": "yarn build && yarn version --patch && cp package.json README.md dist && cd dist && npm publish"
+    "publish-patch": "yarn build && yarn version --patch && cp package.json README.md dist && cd dist && npm publish",
+    "publish-prerelease": "yarn build && yarn version --prerelease && cp package.json README.md dist && cd dist && npm publish"
   },
   "dependencies": {
     "@types/koa": "^2.11.3",
-    "fast-glob": "^3.2.2",
-    "koa": "^2.12.0",
+    "fast-glob": "^3.2.4",
+    "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-morgan": "^1.0.1",
-    "koa-router": "^9.0.1",
+    "koa-router": "^9.1.0",
     "koa-static": "^5.0.0"
   },
   "devDependencies": {
     "@types/koa-router": "^7.4.1",
-    "@types/node": "^14.0.12",
+    "@types/node": "^14.0.27",
     "coa-echo": "^1.0.8",
     "coa-env": "^1.0.2",
     "coa-error": "^1.0.4",
     "coa-helper": "^1.0.6",
     "coa-secure": "^1.0.3",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.7"
   },
   "peerDependencies": {
     "coa-echo": "1",

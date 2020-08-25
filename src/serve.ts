@@ -7,18 +7,18 @@ import { ServeCycle } from './libs/ServeCycle'
 import response from './response'
 import { Apps } from './typings'
 
-type ServeOptions = { apps: Apps, context: any, base?: string, sep?: string }
+type ServeOptions = { apps: Apps, context: any, sep?: string }
 
 export default async (options: ServeOptions, cycle: ServeCycle) => {
 
   helper.showBootInfo()
 
-  const option = Object.assign({ base: 'cgi', sep: '.' }, options)
+  const option = Object.assign({ sep: '.' }, options)
 
   await cycle.onCreated()
 
   // 初始化路由
-  const actions = action(option.base, option.sep, option.apps, cycle)
+  const actions = action(process.env.RUN_BASE || 'cgi', option.sep, option.apps, cycle)
 
   // 初始化koa中间件
   const koa = new Koa()

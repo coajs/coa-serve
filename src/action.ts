@@ -66,8 +66,7 @@ const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle) =
   docs.tags(apps)
 
   const groups = _.keys(docs.infos)
-  const core_base = base.substr(1, base.length - 2)
-  const doc_url = (env.isOnline ? '/sdoc' : '/doc') + (core_base ? (sep + core_base) : '')
+  const doc_url = base + (env.isOnline ? 'sdoc' : 'doc')
 
   // 版本信息
   route.router.get(base + 'version', ctx => {
@@ -102,7 +101,7 @@ const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle) =
 
 export default function (base: string, sep: string, apps: Apps, cycle: ServeCycle) {
 
-  if (!base.startsWith('/')) base = '/' + base
+  base = `/${base}/`.replace(/\/\/+/g, '/').replace(/\/$/, '')
   if (!base.endsWith(sep)) base = base + sep
 
   // 处理doc的额外路由

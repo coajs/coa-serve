@@ -97,7 +97,7 @@ export default function (path: string, method: string, opt: any) {
   if (method !== 'get' && !_.isEmpty(opt.body)) {
     doc.requestBody.content['application/json'] = { schema: get_schema(opt.body) }
   } else {
-    delete doc.requestBody
+    delete (doc as any).requestBody
   }
 
   // 处理responses参数

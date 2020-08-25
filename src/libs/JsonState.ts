@@ -26,8 +26,8 @@ export class JsonState {
   }
 
   value () {
-    this.data.storage.length === 0 && delete this.data.storage
-    this.data.store.length === 0 && delete this.data.store
+    this.data.storage.length === 0 && delete (this.data as any).storage
+    this.data.store.length === 0 && delete (this.data as any).store
     return this.data
   }
 }

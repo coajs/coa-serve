@@ -1,5 +1,3 @@
-import { env } from 'coa-env'
-
 export default (base: string, sep: string, urls: object[]) => `
 <!DOCTYPE html>
 <html lang="zh">
@@ -159,11 +157,11 @@ export default (base: string, sep: string, urls: object[]) => `
 
             deepLinking: true,
             
-            filter: ${env.docs.filter},
+            filter: false,
 
             validatorUrl: null,
 
-            docExpansion: '${env.docs.expansion}',
+            docExpansion: 'none',
 
             defaultModelsExpandDepth: 10,
             defaultModelExpandDepth : 10,

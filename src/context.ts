@@ -83,6 +83,9 @@ export default {
     if (e.name === 'CoaContextError') {
       e.stdout && echo.error(e.stack || e.toString() || '')
       this.jsonFail(e.message, e.code, e.mark)
+    } else if (e.name === 'CoaError') {
+      e.stdout && echo.error(e.stack || e.toString() || '')
+      this.jsonFail(e.message, 400, e.code)
     } else {
       this.jsonFail(e.toString(), 500)
       echo.error(e.stack || e.toString() || '')

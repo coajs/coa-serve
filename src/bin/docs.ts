@@ -1,4 +1,3 @@
-import { env } from 'coa-env'
 import { _ } from 'coa-helper'
 import swagger from '../libs/swagger'
 import { Apps, Dic } from '../typings'
@@ -32,18 +31,18 @@ export default new class {
   infos = infos
 
   tags (tags: Apps) {
-    _.defaultsDeep(docs, env.docs, {
+    _.defaultsDeep(docs, {
       filter: false,
       expansion: 'list',
       info: {
         title: '平台接口文档',
-        version: env.version,
+        version: '',
         description: '平台接口文档，包含用户端和管理端',
       }
     })
     _.forEach(tags, (content1, key1) => {
       key1 = key1.toLowerCase()
-      if (!env.mods[''] && !env.mods[key1]) return
+      // if (!env.mods[''] && !env.mods[key1]) return
       if (!infos[key1]) infos[key1] = _.cloneDeep(docs)
       _.forEach(content1, (content2, key2) => {
         infos[key1].tags.push({ name: _.startCase(key2), description: content2 })

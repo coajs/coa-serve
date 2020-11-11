@@ -48,12 +48,6 @@ export interface Action {
   }
 }
 
-// 扩展类库
-declare module 'coa-env' {
-  interface Env {
-    docs: DocsEnv
-  }
-}
 declare module 'koa' {
   interface Request {
     body?: any;

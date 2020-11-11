@@ -1,5 +1,5 @@
 import { echo } from 'coa-echo'
-import { env } from 'coa-env'
+import { CoaEnv } from 'coa-env'
 import { _ } from 'coa-helper'
 import * as fg from 'fast-glob'
 import auth from './bin/auth'
@@ -18,9 +18,10 @@ const doEachActions = (base: string, sep: string) => {
     return base + path
   }
 
-  const mods = Object.keys(env.mods).join('|')
+  // const mods = Object.keys(env.mods).join('|')
+  // const files = fg.sync(mods ? `apps-(${mods}|-)/**/action*.js` : 'apps*/**/action*.js', { cwd: process.env.NODE_PATH })
 
-  const files = fg.sync(mods ? `apps-(${mods}|-)/**/action*.js` : 'apps*/**/action*.js', { cwd: process.env.NODE_PATH })
+  const files = fg.sync('apps*/**/action*.js', { cwd: process.env.NODE_PATH })
 
   _.forEach(files, filename => {
 
@@ -60,7 +61,7 @@ const doEachActions = (base: string, sep: string) => {
 }
 
 // 添加action文件
-const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle) => {
+const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle, env: CoaEnv) => {
 
   // 遍历apps分组
   docs.tags(apps)
@@ -99,13 +100,13 @@ const doDocAction = (base: string, sep: string, apps: Apps, cycle: ServeCycle) =
   })
 }
 
-export default function (base: string, sep: string, apps: Apps, cycle: ServeCycle) {
+export default function (base: string, sep: string, apps: Apps, cycle: ServeCycle, env: CoaEnv) {
 
   base = `/${base}/`.replace(/\/\/+/g, '/').replace(/\/$/, '')
   if (!base.endsWith(sep)) base = base + sep
 
   // 处理doc的额外路由
-  doDocAction(base, sep, apps, cycle)
+  doDocAction(base, sep, apps, cycle, env)
 
   // 处理每个action路由
   doEachActions(base, sep)

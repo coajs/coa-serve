@@ -1,5 +1,5 @@
 import { echo } from 'coa-echo'
-import { die } from 'coa-error'
+import { CoaError } from 'coa-error'
 import { _ } from 'coa-helper'
 
 export default {
@@ -24,8 +24,8 @@ export default {
   // 校验并返回处理后的参数
   checkParam<T> (id: string, value: T, data: any, required: boolean, title?: string) {
 
-    required && !data && die.hint(`缺少${title || id}参数`)
-    const invalid = () => required ? die.hint(`参数${title || id}有误`) : value
+    required && !data && CoaError.message('Serve.ParamMissing', `缺少${title || id}参数`)
+    const invalid = () => required ? CoaError.message('Serve.ParamInvalid', `参数${title || id}有误`) : value
 
     const type = typeof value as string
     if (type === 'string') {

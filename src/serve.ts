@@ -1,4 +1,4 @@
-import { env } from 'coa-env'
+import { CoaEnv } from 'coa-env'
 import * as Koa from 'koa'
 import action from './action'
 import helper from './bin/helper'
@@ -9,7 +9,7 @@ import { Apps } from './typings'
 
 type ServeOptions = { apps: Apps, context: any, sep?: string }
 
-export default async (options: ServeOptions, cycle: ServeCycle) => {
+export default async (options: ServeOptions, cycle: ServeCycle, env: CoaEnv) => {
 
   helper.showBootInfo()
 
@@ -18,7 +18,7 @@ export default async (options: ServeOptions, cycle: ServeCycle) => {
   await cycle.onCreated()
 
   // 初始化路由
-  const actions = action(process.env.RUN_BASE || 'cgi', option.sep, option.apps, cycle)
+  const actions = action(process.env.RUN_BASE || 'cgi', option.sep, option.apps, cycle, env)
 
   // 初始化koa中间件
   const koa = new Koa()
@@ -37,7 +37,7 @@ export default async (options: ServeOptions, cycle: ServeCycle) => {
   koa.listen(port, async () => {
     helper.showBootInfo(port)
     await cycle.onStarted()
-    env.set({ started: true })
+    Object.assign(env, { started: true })
   })
 
 };

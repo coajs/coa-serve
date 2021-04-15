@@ -21,7 +21,8 @@ const doEachActions = (base: string, sep: string) => {
   // const mods = Object.keys(env.mods).join('|')
   // const files = fg.sync(mods ? `apps-(${mods}|-)/**/action*.js` : 'apps*/**/action*.js', { cwd: process.env.NODE_PATH })
 
-  const files = fg.sync('apps*/**/action*.js', { cwd: process.env.NODE_PATH })
+  const cwd = process.env.NODE_PATH?.split(':')[0]
+  const files = fg.sync('apps*/**/action*.js', { cwd })
 
   _.forEach(files, filename => {
 

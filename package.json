@@ -1,6 +1,6 @@
 {
   "name": "coa-serve",
-  "version": "1.0.22",
+  "version": "1.0.24",
   "description": "serve component for coa",
   "keywords": [
     "coajs",

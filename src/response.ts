@@ -1,10 +1,12 @@
-import { Context } from './typings'
+import { Context } from './typings';
 
 const koaSend = require('koa-send')
 
 export default () => async (ctx: Context, next: () => Promise<void>) => {
   try {
     await next()
+    // 强制设置为不缓存
+    ctx.set('Cache-Control', 'no-cache');
     // 如果内容为空，且上级应用没有接管respond，只能判断respond !== false
     if (ctx.respond !== false && !ctx.response.body) {
       // 判断是否是下载文件
